@@ -1,0 +1,29 @@
+<div class="chat-box">
+  <div class="messages-container" #messagesContainer (scroll)="onScroll()">
+    @if (messages$ | async; as messages) {
+      @if (messages.length === 0) {
+        <div class="empty-state">
+          <p>Nu exista mesaje! Fii primul care lasa un mesaj locatarilor!</p>
+        </div>
+      } @else {
+        @if (currentUser$ | async; as currentUser) {
+          @for (message of messages; track message.id) {
+            @if (message.isSystemMessage) {
+              <div class="system-message">
+                <span class="system-text">ℹ️ {{ message.text }}</span>
+              </div>
+            } @else {
+              <div class="message" [class.own-message]="message.username === currentUser">
+                <div class="message-header">
+                  <span class="username">{{ message.username }}</span>
+                  <span class="timestamp">{{ message.timestamp | date: 'HH:mm' }}</span>
+                </div>
+                <div class="message-text">{{ message.text }}</div>
+              </div>
+            }
+          }
+        }
+      }
+    }
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<header class="chat-header">
+  <div class="header-content">
+    <div class="header-text">
+      <h1>Chat Live</h1>
+      <p>Aici este chat-ul blocului 13 din cartierul Nord, Bacau!</p>
+    </div>
+    <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="(isDarkMode$ | async) ? 'Activează modul luminos' : 'Activează modul întunecat'">
+      @if (isDarkMode$ | async) {
+        ☀️
+      } @else {
+        🌙
+      }
+    </button>
+  </div>
+</header>

@@ -1,0 +1,35 @@
+<div class="message-form">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input
+        type="text"
+        class="username-input"
+        [(ngModel)]="username"
+        name="username"
+        placeholder="Nume locatar(ex: Andrei, Maria)"
+        maxlength="30"
+      />
+    </div>
+    
+    <div class="form-group message-group">
+      <input
+        type="text"
+        class="message-input"
+        [(ngModel)]="messageText"
+        name="message"
+        placeholder="Scrie un mesaj..."
+        required
+        maxlength="500"
+      />
+      
+      <button 
+        type="submit" 
+        class="send-button"
+        [disabled]="!messageText.trim()"
+      >
+        <span class="button-text">Trimite</span>
+        <span class="button-icon">↑</span>
+      </button>
+    </div>
+  </form>
+</div>
